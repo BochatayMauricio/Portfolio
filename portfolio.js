@@ -123,7 +123,7 @@
             const subtitle = document.querySelector('.hero .subtitle');
             if (subtitle) {
                 setTimeout(() => {
-                    typeWriter(subtitle, 'Ingeniero en Sistemas', 150);
+                    typeWriter(subtitle, 'Estudiante Avanzado Ingeniería en Sistemas', 150);
                 }, 2000);
             }
         });
