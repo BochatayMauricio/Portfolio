@@ -1,5 +1,5 @@
 
-        // Smooth scrolling for navigation links
+      // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -67,8 +67,8 @@
             
             // Get form data
             const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
+            const name = formData.get('from_name');
+            const email = formData.get('from_email');
             const message = formData.get('message');
             
             // Simple validation
@@ -83,12 +83,24 @@
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
             
-            setTimeout(() => {
-                alert('¡Gracias por tu mensaje! Te contactaré pronto.');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+            let form = this;
+
+            
+            // Enviar email
+            emailjs.sendForm('service_uwas9yt', 'template_p8cel8r', form, 'JdmU5X9-u8qYmeJtI')
+                .then(function(response) {
+                    alert('¡Mensaje enviado exitosamente! Te responderé pronto.');
+                    })
+                    .catch(function(error) {
+                        alert('Error al enviar el mensaje. Por favor, intenta nuevamente.');
+                    })
+                    .finally(function() {
+                        // Limpiar el formulario
+                        form.reset();
+                        // Restaurar estado del botón
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    });
         });
 
         // Enhanced hover effects
