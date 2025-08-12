@@ -3,3 +3,6 @@ FROM nginx:alpine
 
 # Copiamos todos los archivos del proyecto a la carpeta donde nginx sirve contenido
 COPY . /usr/share/nginx/html
+
+# Exponemos el puerto 80
+EXPOSE 80
